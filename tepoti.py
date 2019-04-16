@@ -8,10 +8,10 @@ def notify(title, text):
 osascript -e 'display notification "{}" with title "{}"'
 """.format(text, title))
     
-def getTime(seconds):
+def get_time(seconds):
     return (math.floor(seconds / 60), seconds % 60)
     
-def formatTime(min, sec):
+def format_time(min, sec):
     return str(min).rjust(2, '0') + ':' + str(sec).rjust(2, '0')
 
 def show_pomodoro():
@@ -22,7 +22,7 @@ def show_break():
 
 def show_timer(msg, seconds):
     for i in range(0, seconds):
-        print(msg, formatTime(*getTime(i)), ' ' * 10, end='\r', flush=True)
+        print(msg, format_time(*get_time(i)), ' ' * 10, end='\r', flush=True)
         time.sleep(1)
     notify('Pomodoro', '{} finished'.format(msg))
 
